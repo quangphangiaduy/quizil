@@ -11,6 +11,14 @@
     font-weight: bold;
 }
 
+.fontsize_14 {
+    font-size: 14px !important;
+}
+
+.font_red {
+    color: red !important;
+}
+
 .start-wrapper {
     width: 100%;
     height: 100%;
@@ -52,10 +60,6 @@
 .wrapper {
     width: 80%;
     margin: 0 auto;
-}
-
-#question_content {
-    border: 2px solid lightseagreen;
 }
 
 #time {
@@ -101,14 +105,51 @@
 
 div.fixed_scroll {
     position: fixed;
-    top: 0;
+    top: 10px;
     z-index: 1071;
     width: 100%;
-    animation-name: showTheTime;
-    animation-duration: 2s;
+    /* animation-name: showTheTime;
+    animation-duration: 2s; */
 }
 
-@keyframes showTheTime {
+#question_content {
+    border: 2px solid lightseagreen;
+}
+
+#question_content input[type='radio']:after {
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    top: -2px;
+    left: -1px;
+    position: relative;
+    background-color: white;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+#question_content input[type='radio']:checked:after {
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    top: -2px;
+    left: -1px;
+    position: relative;
+    background-color: lightseagreen;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 3px solid white;
+    box-shadow: 1px 1px 2px 2px black;
+    cursor: pointer;
+    display: inline-block;
+}
+
+
+/* @keyframes showTheTime {
     0% {
         opacity: 0;
     }
@@ -142,4 +183,4 @@ div.fixed_scroll {
     100% {
         opacity: 1;
     }
-}
+} */
