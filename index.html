@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="fontawesome/css/all.min.css" />
+    <link rel="stylesheet" href="quizil.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- nút bắt đầu -->
+            <div class="start-wrapper">
+                <button id="start">Start<br>test</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div id="time2" style="display: none;">
+
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="wrapper">
+                    <!-- chứa thời gian -->
+                    <h3 class="col-md-12 mt-4 p-2 pl-3" id="time">
+
+                    </h3>
+                    <!-- chứa câu hỏi và đáp án -->
+                    <div class="p-2 pl-3 pr-3 pb-4 pt-3" id="question_content">
+
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="wrapper bg mb-4 pb-2">
+                    <!-- nút nộp bài -->
+                    <div class="col-sm-12 text-center">
+                        <button type="button" class="btn btn-danger mt-2 mb-1" id="finish">Nộp Bài</button>
+                    </div>
+                    <!-- chứa điểm -->
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-md-6 col-sm-12 text-md-left text-sm-center" id="scores"></div>
+                            <div class="col-md-6 col-sm-12 text-md-right text-sm-center " id="percent"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<style>
+    input[type='radio']:after {
+        width: 15px;
+        height: 15px;
+        border-radius: 15px;
+        top: -2px;
+        left: -1px;
+        position: relative;
+        background-color: white;
+        content: '';
+        display: inline-block;
+        visibility: visible;
+        border: 1px solid black;
+        cursor: pointer;
+    }
+    
+    input[type='radio']:checked:after {
+        width: 15px;
+        height: 15px;
+        border-radius: 15px;
+        top: -2px;
+        left: -1px;
+        position: relative;
+        background-color: lightseagreen;
+        content: '';
+        display: inline-block;
+        visibility: visible;
+        border: 3px solid white;
+        box-shadow: 1px 1px 2px 2px black;
+        cursor: pointer;
+        display: inline-block;
+    }
+</style>
+
+<script src="jquery-3.5.1.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="main.js"></script>
+
+</html>
