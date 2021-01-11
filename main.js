@@ -189,27 +189,23 @@ $(function() {
             case 100:
                 img += "img/5.png";
                 rate += "Làm tốt lắm!";
-
                 break;
             case 90:
             case 80:
                 img += "img/4.png";
                 rate += "Làm tốt"
-
                 break;
             case 70:
             case 60:
             case 50:
                 img += "img/3.png";
                 rate += "Tạm được"
-
                 break;
             case 40:
             case 30:
             case 20:
                 img += "img/2.png";
                 rate += "Sai nhiều quá!"
-
                 break;
             default:
                 img += "img/1.png";
@@ -229,8 +225,9 @@ $(function() {
             imageUrl: `${img}`,
             title: `Điểm của bạn là&nbsp;<b style="color:red">${scores}</b>`,
             text: `${rate}`,
-            confirmButtonText: 'Xác nhận',
+            confirmButtonText: 'Xem chi tiết',
             footer: '<a href="index.html">Không hài lòng với kết quả? Thử lại?</a>',
+            backdrop: `rgba(0,0,0,0.9)`,
             showClass: {
                 popup: 'animate__animated animate__backInDown'
             },
@@ -238,7 +235,6 @@ $(function() {
                 popup: 'animate__animated animate__backOutDown'
             }
         })
-
     };
 
     //var scrollTop = $(window).scrollTop();
@@ -257,10 +253,10 @@ $(function() {
     });
     //animate
     $('#finish').hover(function() {
-        $(this).addClass("animate__animated animate__wobble animate__repeat-2");
+        $(this).addClass("animate__animated animate__wobble");
 
     }, function() {
-        $(this).removeClass("animate__animated animate__wobble animate__repeat-2");
+        $(this).removeClass("animate__animated animate__wobble");
     });
 
 });
