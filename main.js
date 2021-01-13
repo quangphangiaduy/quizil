@@ -76,7 +76,7 @@ $(function() {
 
                     element += `
                     <div class="result mt-4" id="question_${value['id']}">
-                         <h6 class="mb-3" id="${value['id']}"><span class="correctanswer" style="display: none;"><i class="far fa-check-circle"></i>&nbsp;</span><span class="wrongquestion" style="display: none;"><i class="far fa-times-circle"></i>&nbsp;</span> <span style="font-weight:bold; text-decoration:underline">Câu ${serial}:</span> ${value['question']}</h6>
+                         <h6 class="mb-3" id="${value['id']}"><span class="correctanswer" style="display: none;"><i class="far fa-check-circle"></i>&nbsp;</span><span class="wrongquestion" style="display: none;"><i class="far fa-times-circle"></i>&nbsp;</span> <span style="font-weight:bold; text-decoration:underline; font-family: Orbitron">Câu ${serial}:</span> ${value['question']}</h6>
                          
                          <fieldset>
                          <div class="radio col-md-12 ">
@@ -147,32 +147,36 @@ $(function() {
                 <tr>
                     <td class="text-left"><i class="fas fa-square-root-alt"></i></td>
                     <td class="text-left">&nbsp;Số câu hỏi đã trả lời</td>
-                    <td>:&nbsp;${trueResults+falseResults}</td>
-                    <td>/${trueResults+falseResults+ignoredQuestion}</td>
+                    <td>:&nbsp;</td>
+                    <td class="font_number">${trueResults+falseResults}</td>
+                    <td class="font_number">/&nbsp;${trueResults+falseResults+ignoredQuestion}</td>
                 </tr>
                 <tr>
                     <td class="text-left"></td>
                     <td class="text-left fontsize_14"><i class="fas fa-check"></i>&nbsp;Số đáp án chọn đúng</td>
-                    <td>:&nbsp;${trueResults}</td>
-                    <td>/${trueResults+falseResults}</td>
+                    <td>:&nbsp;</td>
+                    <td class="font_number">${trueResults}</td>
+                    <td class="font_number">/&nbsp;${trueResults+falseResults}</td>
                 </tr>
                 <tr>
                     <td class="text-left"></td>
                     <td class="text-left fontsize_14 "><i class="fas fa-times"></i>&nbsp;&nbsp;Số đáp án chọn sai</td>
-                    <td>:&nbsp;${falseResults}</td>
-                    <td>/${trueResults+falseResults}</td>
+                    <td>:&nbsp;</td>
+                    <td class="font_number">${falseResults}</td>
+                    <td class="font_number">/&nbsp;${trueResults+falseResults}</td>
                 </tr>
                 <tr>
                     <td class="text-left"><i class="far fa-times-circle"></i></td>
                     <td class="text-left">&nbsp;Số câu hỏi bị bỏ qua</td>
-                    <td>:&nbsp;${ignoredQuestion}</td>
-                    <td>/${trueResults+falseResults+ignoredQuestion}</td>
+                    <td>:&nbsp;</td>
+                    <td class="font_number">${ignoredQuestion}</td>
+                    <td class="font_number">/&nbsp;${trueResults+falseResults+ignoredQuestion}</td>
                 </tr>
                 <tr>
                     <td class="text-left"><i class="far fa-check-circle"></i></td>
                     <td class="text-left">&nbsp;Điểm của bạn là</td>
-                    <td>:&nbsp;<b class="font_red" >${scores}</b></td>
-                    <td>/${trueResults+falseResults+ignoredQuestion}</td>
+                    <td>:&nbsp;</td>
+                    <td class="animate__animated animate__tada animate__slow animate__infinite"><b class="font_red">${scores}</b></td>
                 </tr>
             </tbody>
         </table>
@@ -215,7 +219,7 @@ $(function() {
 
         percent +=
             `<img class="mt-4" src=${img}>
-            <p class="mb-0">Tỉ lệ đúng: ${scorePerCent}%</p>
+            <p class="mb-0">Tỉ lệ đúng:<span class="font_number"> ${scorePerCent} </span>%</p>
             <p>${rate}</p> `;
 
         $('#percent').html(percent); //trả thẻ html về div chứa
@@ -223,11 +227,13 @@ $(function() {
         //sweet alert
         Swal.fire({
             imageUrl: `${img}`,
-            title: `Điểm của bạn là&nbsp;<b style="color:red">${scores}</b>`,
+            title: `Điểm của bạn là&nbsp;<b class="font_number" style="color:red">${scores}</b>`,
             text: `${rate}`,
             confirmButtonText: 'Xem chi tiết',
             footer: '<a href="index.html">Không hài lòng với kết quả? Thử lại?</a>',
-            backdrop: `rgba(0,0,0,0.9)`,
+            backdrop: `rgba(0,0,0,0.95)`,
+            allowOutsideClick: false,
+            allowEscapeKey: false,
             showClass: {
                 popup: 'animate__animated animate__backInDown'
             },

@@ -1,6 +1,24 @@
 @font-face {
-    src: url(font/Orbitron-VariableFont_wght.ttf);
+    src: url(font/Orbitron-Medium.ttf);
     font-family: Orbitron;
+}
+
+@font-face {
+    src: url(font/WorkSans-Regular.ttf);
+    font-family: WorkSans;
+}
+
+@font-face {
+    src: url(font/WorkSans-Bold.ttf);
+    font-family: WorkSans-Bold;
+}
+
+body {
+    font-family: WorkSans;
+}
+
+h6 {
+    font-family: WorkSans-Bold;
 }
 
 .bg {
@@ -15,8 +33,15 @@
     font-size: 14px !important;
 }
 
+.font_number {
+    font-family: Orbitron !important;
+}
+
 .font_red {
     color: red !important;
+    font-weight: bold;
+    font-size: 18px;
+    font-family: Orbitron;
 }
 
 .start-wrapper {
