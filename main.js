@@ -117,6 +117,8 @@ $(function() {
         let falseResults = 0; //đếm câu trẩ lời sai
         let ignoredQuestion = 0; //đếm câu hỏi bị bỏ qua
 
+        $('input[type="radio"]').prop('disabled', true); //disabled chọn đáp án
+
         $('#question_content div.result').each(function(i, v) {
             // console.log(i, v);
             let id = $(v).find('h6').attr('id'); //lấy id câu hỏi
@@ -130,16 +132,17 @@ $(function() {
             if (choice == answer) { //điều kiện đáp án đúng
                 scores += 1; //mỗi câu đúng được cộng 1 điểm
                 trueResults++ //tăng số câu trả lời đúng
-                $('#question_' + id + '> h6 > span.correctanswer').css({ "display": "inline-block", "color": "green" }); //hiển thị câu hỏi trả lời đúng
+                $('#question_' + id + '> h6 > span.correctanswer').css({ "display": "inline-block", "color": "green" }).addClass("animate__animated animate__wobble animate__slower animate__infinite"); //hiển thị câu hỏi trả lời đúng
             } else if (typeof choice === 'undefined' && choice !== answer) { //điều kiện câu hỏi bị bỏ qua
                 ignoredQuestion++ //tắng số câu hỏi bị bỏ qua
                 $('#question_' + id + ' > h6 > span.wrongquestion').css({ "display": "inline-block", "color": "red" }); //hiển thị câu hỏi bị bỏ qua
-            } else if (choice !== answer) { //điều kiện đáp án sai
+            } else if (choice !== answer) { //điều kiện đáp án sai  
                 falseResults++ //tăng số câu trả lời sai
                 $('#question_' + id + ' > h6 > span.wrongquestion').css({ "display": "inline-block", "color": "red" }); //hiển thị câu hỏi trả lời sai
                 $('#question_' + id + ' > fieldset > div > label.' + choice + ' > span.false').css({ "display": "inline-block", "color": "red" }); //hiển thị đáp án sai
             }
-            $('#question_' + id + ' > fieldset > div > label.' + answer + ' > span.check').css({ "display": "inline-block", "color": "green" }); //hiển thị đáp án đúng
+            $('#question_' + id + ' > fieldset > div > label.' + answer + ' > span.check').css({ "display": "inline-block", "color": "green" }).addClass("animate__animated animate__tada animate__slow animate__infinite"); //hiển thị đáp án đúng
+
         });
         result += `
         <table class="mt-2">
@@ -149,34 +152,38 @@ $(function() {
                     <td class="text-left">&nbsp;Số câu hỏi đã trả lời</td>
                     <td>:&nbsp;</td>
                     <td class="font_number">${trueResults+falseResults}</td>
-                    <td class="font_number">/&nbsp;${trueResults+falseResults+ignoredQuestion}</td>
+                    <td>/</td>
+                    <td class="font_number">${trueResults+falseResults+ignoredQuestion}</td>
                 </tr>
                 <tr>
                     <td class="text-left"></td>
                     <td class="text-left fontsize_14"><i class="fas fa-check"></i>&nbsp;Số đáp án chọn đúng</td>
                     <td>:&nbsp;</td>
                     <td class="font_number">${trueResults}</td>
-                    <td class="font_number">/&nbsp;${trueResults+falseResults}</td>
+                    <td>/</td>
+                    <td class="font_number">${trueResults+falseResults}</td>
                 </tr>
                 <tr>
                     <td class="text-left"></td>
                     <td class="text-left fontsize_14 "><i class="fas fa-times"></i>&nbsp;&nbsp;Số đáp án chọn sai</td>
                     <td>:&nbsp;</td>
                     <td class="font_number">${falseResults}</td>
-                    <td class="font_number">/&nbsp;${trueResults+falseResults}</td>
+                    <td>/</td>
+                    <td class="font_number">${trueResults+falseResults}</td>
                 </tr>
                 <tr>
                     <td class="text-left"><i class="far fa-times-circle"></i></td>
                     <td class="text-left">&nbsp;Số câu hỏi bị bỏ qua</td>
                     <td>:&nbsp;</td>
                     <td class="font_number">${ignoredQuestion}</td>
-                    <td class="font_number">/&nbsp;${trueResults+falseResults+ignoredQuestion}</td>
+                    <td>/</td>
+                    <td class="font_number">${trueResults+falseResults+ignoredQuestion}</td>
                 </tr>
                 <tr>
                     <td class="text-left"><i class="far fa-check-circle"></i></td>
                     <td class="text-left">&nbsp;Điểm của bạn là</td>
                     <td>:&nbsp;</td>
-                    <td class="animate__animated animate__tada animate__slow animate__infinite"><b class="font_red">${scores}</b></td>
+                    <td class="animate__animated animate__bounce animate__slower animate__infinite"><b class="font_red">${scores}</b></td>
                 </tr>
             </tbody>
         </table>
@@ -219,7 +226,7 @@ $(function() {
 
         percent +=
             `<img class="mt-4" src=${img}>
-            <p class="mb-0">Tỉ lệ đúng:<span class="font_number"> ${scorePerCent} </span>%</p>
+            <p class="mb-0">Tỉ lệ đúng:<span id="scorePerCent" class="score_PerCent font_number animate__animated animate__flash animate__infinite"> ${scorePerCent} </span>%</p>
             <p>${rate}</p> `;
 
         $('#percent').html(percent); //trả thẻ html về div chứa
@@ -259,10 +266,10 @@ $(function() {
     });
     //animate
     $('#finish').hover(function() {
-        $(this).addClass("animate__animated animate__wobble");
+        $(this).addClass("animate__animated animate__heartBeat");
 
     }, function() {
-        $(this).removeClass("animate__animated animate__wobble");
+        $(this).removeClass("animate__animated animate__heartBeat");
     });
 
 });
