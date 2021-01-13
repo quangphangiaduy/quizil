@@ -173,6 +173,11 @@ div.fixed_scroll {
     display: inline-block;
 }
 
+.score_PerCent {
+    --animate-duration: 4s;
+    color: #000;
+}
+
 
 /* @keyframes showTheTime {
     0% {
