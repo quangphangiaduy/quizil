@@ -76,23 +76,23 @@ $(function() {
 
                     element += `
                     <div class="result mt-4" id="question_${value['id']}">
-                         <h6 class="mb-3" id="${value['id']}"><span class="correctanswer" style="display: none;"><i class="far fa-check-circle"></i>&nbsp;</span><span class="wrongquestion" style="display: none;"><i class="far fa-times-circle"></i>&nbsp;</span> <span style="font-weight:bold; text-decoration:underline; font-family: Orbitron">Câu ${serial}:</span> ${value['question']}</h6>
+                         <h6 class="mb-3" id="${value['id']}"><span class="correctanswer" style="display: none;"><i class="far fa-check-circle fa-sm"></i>&nbsp;</span><span class="wrongquestion" style="display: none;"><i class="far fa-times-circle fa-sm"></i>&nbsp;</span> <span style="font-weight:bold; text-decoration:underline; font-family: Orbitron">Câu ${serial}:</span> ${value['question']}</h6>
                          
                          <fieldset>
                          <div class="radio col-md-12 ">
-                          <label class="A "><input type="radio" class="A" name="${value['id']}">&nbsp;<span style="font-weight:bold;">A. </span>${value['option_a']}<span class="check" style="display: none;">&nbsp;<i class="fas fa-check"></i></span><span class="false" style="display: none;">&nbsp;<i class="fas fa-times"></i></span></label>
+                          <label class="A "><input type="radio" class="A" name="${value['id']}">&nbsp;<span style="font-weight:bold;">A. </span>${value['option_a']}<span class="check" style="display: none;">&nbsp;<i class="fas fa-check fa-sm"></i></span><span class="false" style="display: none;">&nbsp;<i class="fas fa-times fa-sm"></i></span></label>
                          </div>
 
                         <div class="radio col-md-12">
-                           <label class="B "><input type="radio" class="B" name="${value['id']}">&nbsp;<span style="font-weight:bold;">B. </span>${value['option_b']}<span class="check" style="display: none;">&nbsp;<i class="fas fa-check"></i></span><span class="false" style="display: none;">&nbsp;<i class="fas fa-times"></i></span></label>
+                           <label class="B "><input type="radio" class="B" name="${value['id']}">&nbsp;<span style="font-weight:bold;">B. </span>${value['option_b']}<span class="check" style="display: none;">&nbsp;<i class="fas fa-check fa-sm"></i></span><span class="false" style="display: none;">&nbsp;<i class="fas fa-times fa-sm"></i></span></label>
                          </div>
 
                          <div class="radio  col-md-12">
-                           <label class="C "><input type="radio" class="C" name="${value['id']}">&nbsp;<span style="font-weight:bold;">C. </span>${value['option_c']}<span class="check" style="display: none;">&nbsp;<i class="fas fa-check"></i></span><span class="false" style="display: none;">&nbsp;<i class="fas fa-times"></i></span></label>
+                           <label class="C "><input type="radio" class="C" name="${value['id']}">&nbsp;<span style="font-weight:bold;">C. </span>${value['option_c']}<span class="check" style="display: none;">&nbsp;<i class="fas fa-check fa-sm"></i></span><span class="false" style="display: none;">&nbsp;<i class="fas fa-times fa-sm"></i></span></label>
                          </div>
 
                          <div class="radio col-md-12">
-                           <label class="D "><input type="radio" class="D" name="${value['id']}">&nbsp;<span style="font-weight:bold;">D. </span>${value['option_d']}<span class="check" style="display: none;">&nbsp;<i class="fas fa-check"></i></span><span class="false" style="display: none;">&nbsp;<i class="fas fa-times"></i></span></label>
+                           <label class="D "><input type="radio" class="D" name="${value['id']}">&nbsp;<span style="font-weight:bold;">D. </span>${value['option_d']}<span class="check" style="display: none;">&nbsp;<i class="fas fa-check fa-sm"></i></span><span class="false" style="display: none;">&nbsp;<i class="fas fa-times fa-sm"></i></span></label>
                          </div>
                         </fieldset>
                     </div>
@@ -119,15 +119,15 @@ $(function() {
 
         $('input[type="radio"]').prop('disabled', true); //disabled chọn đáp án
 
-        $('#question_content div.result').each(function(i, v) {
-            // console.log(i, v);
-            let id = $(v).find('h6').attr('id'); //lấy id câu hỏi
+        $('#question_content div.result').each(function(index, value) {
+            //console.log(index, value);
+            let id = $(value).find('h6').attr('id'); //lấy id câu hỏi
             //console.log(id);
             let question = questions.find(x => x.id == id); //tìm câu hỏi trong mảng questions dựa vào id đã có ở trên
             // console.log(question);
             let answer = question['answer']; //lấy đáp án đúng của câu hỏi
             //console.log(answer);
-            let choice = $(v).find('fieldset input[type="radio"]:checked').attr('class'); //lấy đáp án được chọn
+            let choice = $(value).find('fieldset input[type="radio"]:checked').attr('class'); //lấy đáp án được chọn
             // console.log(choice);
             if (choice == answer) { //điều kiện đáp án đúng
                 scores += 1; //mỗi câu đúng được cộng 1 điểm
@@ -226,7 +226,7 @@ $(function() {
 
         percent +=
             `<img class="mt-4" src=${img}>
-            <p class="mb-0">Tỉ lệ đúng:<span id="scorePerCent" class="score_PerCent font_number animate__animated animate__flash animate__infinite"> ${scorePerCent} </span>%</p>
+            <p class="mb-0">Tỉ lệ đúng:<span class="score_PerCent font_number animate__animated animate__flash animate__infinite"> ${scorePerCent} </span>%</p>
             <p>${rate}</p> `;
 
         $('#percent').html(percent); //trả thẻ html về div chứa
